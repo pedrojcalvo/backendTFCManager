@@ -17,14 +17,14 @@ const loginController = async(req, res ) => {
     if(!userLogged[0]){
         res.status(401).json({
             
-            error: 'Usuario no encontrado.', secret: process.env.SECRETKEY
+            error: 'Usuario no encontrado.'
         })
     }
 
     if(!passwordCorrect){
         res.status(401).json({
             
-            error: 'contraseña incorrecta.', secret: process.env.SECRETKEY
+            error: 'contraseña incorrecta.'
         })
     }
 

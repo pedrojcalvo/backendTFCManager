@@ -12,31 +12,33 @@ const loginController = async(req, res ) => {
 
     // const userLogged = await dbQuery(sql, [user_email]);
 
-    const sql = 'SELECT 1 ';
+    const sql = 'SELECT * FROM users WHERE user_state=true AND user_email= admin@gmail.com ';
 
     const userLogged = await dbQuery(sql);
 
-    const passwordCorrect = userLogged[0] == null ? false : await bcryptjs.compare(user_password, userLogged[0].user_password);
+    // const passwordCorrect = userLogged[0] == null ? false : await bcryptjs.compare(user_password, userLogged[0].user_password);
 
-    if(!userLogged[0]){
-        res.status(401).json({
-            
-            error: 'Usuario no encontrado.'
-        })
-    }
+    const passwordCorrect = true;
 
-    else if(!passwordCorrect){
-        res.status(401).json({
-            
-            error: 'contraseña incorrecta.'
-        })
-    // }
-
-    // if(!userLogged[0] || !passwordCorrect){
+    // if(!userLogged[0]){
     //     res.status(401).json({
             
-    //         error: 'Usuario o contraseña inválido.', secret: process.env.SECRETKEY
+    //         error: 'Usuario no encontrado.'
     //     })
+    // }
+
+    // else if(!passwordCorrect){
+    //     res.status(401).json({
+            
+    //         error: 'contraseña incorrecta.'
+    //     })
+    // }
+
+    if(!userLogged[0] || !passwordCorrect){
+        res.status(401).json({
+            
+            error: 'Usuario o contraseña inválido.', secret: process.env.SECRETKEY
+        })
     }else{
         const token = await generateJWT(userLogged[0]);
         

@@ -1,0 +1,6 @@
+@api=http://localhost:8082/api/auth
+POST {{api}}
+Content-Type: application/json
+
+{"user_email": "admin@gmail.com",
+"user_password": "Hola123456*"}

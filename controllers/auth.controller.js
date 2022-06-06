@@ -6,7 +6,7 @@ const { generateJWT } = require('../helpers/generateJWT');
 
 const loginController = async(req, res ) => {
 
-    const { user_email, user_password } = req.params;
+    const { user_email, user_password } = req.body;
     
     const sql = 'SELECT * FROM users WHERE user_state=true AND user_email=? ';
 
@@ -17,7 +17,7 @@ const loginController = async(req, res ) => {
     if(!userLogged[0] || !passwordCorrect){
         res.status(401).json({
             
-            error: 'Usuario o contraseña inválido.'
+            error: 'Usuario o contraseña inválido.'+ user_email + ',' + user_password 
         })
     }else{
         const token = await generateJWT(userLogged[0]);

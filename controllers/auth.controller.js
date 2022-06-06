@@ -12,9 +12,7 @@ const loginController = async(req, res ) => {
 
     const userLogged = await dbQuery(sql, [user_email]);
 
-    const passwordCorrect = true;
-
-    // const passwordCorrect = userLogged[0] == null ? false : await bcryptjs.compare(user_password, userLogged[0].user_password);
+    const passwordCorrect = userLogged[0] == null ? false : await bcryptjs.compare(user_password, userLogged[0].user_password);
 
     if(!userLogged[0] || !passwordCorrect){
         res.status(401).json({
@@ -23,7 +21,6 @@ const loginController = async(req, res ) => {
         })
     }else{
         const token = await generateJWT(userLogged[0]);
-        
         
         res.json({
             id: userLogged[0].user_id,

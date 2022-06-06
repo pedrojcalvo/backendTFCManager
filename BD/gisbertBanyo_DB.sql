@@ -12,7 +12,8 @@ VALUES
 ('Administrador'),
 ('Empleado');
 
-
+-- KEY user_role (user_role),
+--     CONSTRAINT users_roles_fk FOREIGN KEY (user_role) REFERENCES roles(role_id) ON DELETE NO ACTION
 
 CREATE TABLE IF NOT EXISTS users(
     user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -33,7 +34,7 @@ CREATE TABLE IF NOT EXISTS users(
 INSERT INTO users (user_name, user_email, user_password, user_address, user_city, user_province, user_cp, user_phone, user_role)
 VALUES
 ('PedroCalvo', 'pedrojcalvo@gmail.com', '$2a$10$1ISZ7Mr2C4dr03mXI/ImLuEZjwlWJc/8LjDM83s35fccZ1xTR/c1q', 'Calle Lepanto Nº 7 2ºIzq', 'Elda', 'Alicante', '03600', '744626081', 1 ),
-('Admin', 'admin@gmail.com', '$2a$10$FlRlpGFCpp.1.0OiPn3PMuSI.ULF7KafuL5Ny7GiRjRViaj8rhun6', 'Calle Inventada Nº 12 3ºIzq', 'Alcantarilla', 'Murcia', '30820', '6262351231', 1),
+('Admin', 'admin@gmail.com', '$2a$10$FlRlpGFCpp.1.0OiPn3PMuSI.ULF7KafuL5Ny7GiRjRViaj8rhun6', 'Calle Inventada Nº 12 3ºIzq', 'Alcantarilla', 'Murcia', '30820', '626235123', 1),
 ('Empleado', 'empleado@gmail.com', '$2a$10$kxS6ookx7ARL2NQa35bL/.RWMa6R29aO5nXpTJ/qJIsldNFPO8bla', 'Calle La calleja Nº 1 Bajo', 'Caudete', 'Albacete', '02660', '618684759', 2);
 
 

@@ -37,7 +37,7 @@ const loginController = async(req, res ) => {
     if(!userLogged[0] || !passwordCorrect){
         res.status(401).json({
             
-            error: 'Usuario o contraseña inválido.', secret: process.env.SECRETKEY
+            error: 'Usuario o contraseña inválido.'
         })
     }else{
         const token = await generateJWT(userLogged[0]);

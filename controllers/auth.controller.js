@@ -21,28 +21,28 @@ const loginController = async(req, res ) => {
         })
     }
 
-    if(!passwordCorrect){
+    else if(!passwordCorrect){
         res.status(401).json({
             
             error: 'contraseña incorrecta.'
         })
-    }
+    // }
 
     // if(!userLogged[0] || !passwordCorrect){
     //     res.status(401).json({
             
     //         error: 'Usuario o contraseña inválido.', secret: process.env.SECRETKEY
     //     })
-    // }else{
-    //     const token = await generateJWT(userLogged[0]);
+    }else{
+        const token = await generateJWT(userLogged[0]);
         
-    //     res.json({
-    //         id: userLogged[0].user_id,
-    //         name: userLogged[0].user_name,
-    //         role: userLogged[0].user_role,
-    //         token: token
-    //     });
-    // }
+        res.json({
+            id: userLogged[0].user_id,
+            name: userLogged[0].user_name,
+            role: userLogged[0].user_role,
+            token: token
+        });
+    }
 }
 
 module.exports = {

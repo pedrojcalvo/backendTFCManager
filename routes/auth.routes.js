@@ -9,8 +9,7 @@ const {validateFields} = require('../middlewares/validateFields');
 const router = Router();
 
 router.post('/',
-    loginController,
-    validateJWT
+    loginController
 );
 
 module.exports = router;

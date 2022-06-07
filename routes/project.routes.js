@@ -13,7 +13,7 @@ const { isAdminRole } = require('../middlewares/validateRoles');
 
 const router = Router();
 
-router.get('/', authorizationToken, projectGet);
+router.get('/', projectGet);
 
 router.get('/inactives', authorizationToken, inactiveProjectGet);
 

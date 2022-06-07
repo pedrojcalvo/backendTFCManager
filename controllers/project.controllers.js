@@ -7,16 +7,18 @@ const projectGet = async(req, res) => {
         const {limit=100, from=0} = req.query;
         const sql = 'SELECT * FROM projects INNER JOIN customers ON projects.project_customer = customers.customer_id INNER JOIN users ON projects.project_author = users.user_id WHERE projects.project_state=true ORDER BY project_id LIMIT ? OFFSET ?';
         
-        const countSql = 'SELECT COUNT (project_id) as count from projects WHERE project_state=true';
+        const countSql = 'SELECT COUNT(*) as count from projects WHERE project_state=true';
 
-        const [ total, users ] = await Promise.all([
+        const [ total, projects ] = await Promise.all([
             dbQueryCount(countSql),
             dbQuery(sql,[limit, from])
         ]);
 
+        console.log(projects);
+
         res.json({
         total,
-        users
+        projects
         });
     }catch(error){
         return  res.send({error:'No hay proyectos en la base de datos'});
@@ -30,14 +32,14 @@ const inactiveProjectGet = async(req, res) => {
         
         const countSql = 'SELECT COUNT (project_id) as count from projects WHERE project_state=false';
 
-        const [ total, users ] = await Promise.all([
+        const [ total, projects ] = await Promise.all([
             dbQueryCount(countSql),
             dbQuery(sql,[limit, from])
         ]);
 
         res.json({
         total,
-        users
+        projects
         });
     }catch(error){
         return  res.send({error:'No hay proyectos en la base de datos'});

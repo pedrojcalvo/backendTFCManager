@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node index",
     "start:dev": "node -r dotenv/config index.js",
+    "init:services": "docker-compose up -d",
+    "stop:services": "docker-compose down -v",
     "debug": "node --inspect app"
   },
   "keywords": [],

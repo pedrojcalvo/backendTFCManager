@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
+    "start:dev": "node -r dotenv/config index.js",
     "debug": "node --inspect app"
   },
   "keywords": [],

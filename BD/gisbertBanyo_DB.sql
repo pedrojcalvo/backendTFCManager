@@ -1,6 +1,4 @@
-CREATE DATABASE IF NOT EXISTS gisbertBanyo_DB CHARSET='utf8' COLLATE='utf8_general_ci';;
-
-USE gisbertBanyo_DB;
+USE tfcManager;
 
 CREATE TABLE IF NOT EXISTS roles(
     role_id INT PRIMARY KEY AUTO_INCREMENT,
